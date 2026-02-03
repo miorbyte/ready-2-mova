@@ -3,269 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satu Kebenaran Yang Disembunyikan</title>
+    <title>Demi Sebuah Senyuman...</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Proza+Libre:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
     <style>
-        /* --- THE CINEMATIC THEME --- */
+        /* --- WORLD CLASS AESTHETICS --- */
         :root {
-            --bg-void: #080808;       /* True Dark (Lebih gelap dari hitam biasa) */
-            --text-primary: #E0E0E0;  /* Off-White (Lembut di mata) */
-            --text-muted: #888888;    /* Kelabu Pudar */
-            --accent-gold: #C6A87C;   /* Muted Gold (Eksklusif, bukan kuning) */
+            --bg-deep: #0B0C10;       /* Deepest Night */
+            --bg-panel: #1F2833;      /* Dark Slate */
+            --text-light: #C5C6C7;    /* Soft Silver */
+            --text-highlight: #66FCF1;/* Electric Cyan (Future/Hope) */
+            --text-white: #FFFFFF;
             
-            --font-display: 'Cormorant Garamond', serif; /* Font Novel/Filem */
-            --font-body: 'Proza Libre', sans-serif;      /* Font Editorial Moden */
-            
-            --easing: cubic-bezier(0.23, 1, 0.32, 1);
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Lato', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg-void);
-            color: var(--text-primary);
+            background-color: var(--bg-deep);
+            color: var(--text-light);
             font-family: var(--font-body);
-            line-height: 1.8;
-            font-size: 21px; /* Tulisan besar untuk impak visual */
+            line-height: 2; /* Jarak baris luas untuk bacaan perlahan & emosi */
+            font-size: 20px;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- TYPOGRAPHY --- */
+        /* --- TYPOGRAPHY EMOSI --- */
         h1, h2, h3 {
-            font-family: var(--font-display);
-            font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            color: #FFFFFF;
+            font-family: var(--font-title);
+            color: var(--text-white);
+            line-height: 1.3;
+            margin-bottom: 30px;
         }
 
         h1 {
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            letter-spacing: -0.02em;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 500;
+            letter-spacing: 2px;
         }
-
-        h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 3rem; }
 
         p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 740px;
-            font-weight: 400;
+            margin-bottom: 30px;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        strong { color: var(--text-primary); font-weight: 500; }
-        em { font-family: var(--font-display); font-size: 1.2em; color: var(--accent-gold); }
+        .highlight {
+            color: var(--text-highlight);
+            font-weight: 400;
+            border-bottom: 1px solid rgba(102, 252, 241, 0.3);
+        }
+
+        .quote-box {
+            border-left: 3px solid var(--text-highlight);
+            padding-left: 30px;
+            margin: 60px auto;
+            max-width: 800px;
+            font-style: italic;
+            color: var(--text-white);
+            font-size: 1.3rem;
+        }
 
         /* --- LAYOUT --- */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 30px;
+            text-align: center; /* Center focus for impact */
         }
 
         .section {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 100px 0;
         }
 
-        .divider {
-            width: 1px;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
-            margin: 60px auto;
-        }
-
-        /* --- ANIMATIONS (SCROLL REVEAL) --- */
-        .reveal {
+        /* --- ANIMATIONS --- */
+        .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1.5s var(--easing);
+            transform: translateY(40px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
         }
-
-        .reveal.active {
+        
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- SPECIAL ELEMENTS --- */
-        .intro-meta {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--accent-gold);
-            margin-bottom: 30px;
-            display: inline-block;
+        /* --- THE REVEAL & CTA --- */
+        .reveal-box {
+            background: linear-gradient(180deg, rgba(31,40,51,0) 0%, rgba(31,40,51,0.8) 100%);
+            padding: 100px 0;
         }
 
-        .highlight-box {
-            border-left: 2px solid var(--accent-gold);
-            padding-left: 40px;
-            margin: 60px 0;
-        }
-
-        /* --- THE REVEAL SECTION --- */
-        .brand-section {
-            background: linear-gradient(180deg, var(--bg-void) 0%, #151515 100%);
-            padding: 150px 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .brand-name {
-            font-family: var(--font-display);
-            font-size: 6rem;
-            color: var(--accent-gold);
+        .brand-text {
+            font-family: var(--font-title);
+            font-size: 5rem;
+            color: var(--text-highlight);
             letter-spacing: 10px;
             margin-bottom: 20px;
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 2s ease;
+            text-shadow: 0 0 30px rgba(102, 252, 241, 0.4);
         }
-        
-        .brand-name.visible { opacity: 1; transform: scale(1); }
 
-        .btn-gold {
+        .btn-glow {
             display: inline-block;
             margin-top: 50px;
-            padding: 25px 60px;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #FFF;
-            text-decoration: none;
+            padding: 25px 70px;
+            border: 1px solid var(--text-highlight);
+            color: var(--text-highlight);
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-size: 0.9rem;
-            transition: 0.5s;
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(10px);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
         }
 
-        .btn-gold:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-            transform: translateY(-5px);
+        .btn-glow:hover {
+            background: var(--text-highlight);
+            color: var(--bg-deep);
+            box-shadow: 0 0 50px rgba(102, 252, 241, 0.6);
         }
 
-        @media (max-width: 768px) {
-            .container { padding: 0 25px; }
-            h1 { font-size: 2.8rem; }
-            .brand-name { font-size: 3.5rem; letter-spacing: 5px; }
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            border-top: 1px solid #333;
         }
     </style>
 </head>
 <body>
 
     <section class="section">
-        <div class="container">
-            <div class="intro-meta reveal">Sebuah Surat Terbuka Untuk Ketua Keluarga</div>
-            <h1 class="reveal">Pernahkah Anda Rasa... <br>Gaji Masuk, Tapi Hati Masih Resah?</h1>
+        <div class="container fade-in">
+            <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: #888;">Satu Realiti Kehidupan</p>
+            <h1>Berapa Kali Anda Terpaksa Berkata <br><span style="font-style: italic;">"Nanti Dulu..."</span> Kepada Anak Anda?</h1>
             
-            <div class="reveal">
-                <p>Malam tadi, semasa anak-anak sudah tidur, mungkin anda duduk sendirian di ruang tamu. Memegang telefon. Membuka aplikasi bank.</p>
-                <p>Angkanya ada. Tapi anda tahu, esok atau lusa, angka itu akan susut mendadak.</p>
-                <p>Bukan kerana anda boros. Bukan kerana anda joli. Tapi kerana tuntutan hidup. Susu. Lampin. Yuran sekolah. Pakaian.</p>
-                <p style="color: #FFF; font-style: italic;">"Ke mana perginya semua hasil titik peluh aku?"</p>
+            <div style="margin-top: 50px;">
+                <p>Anak minta mainan baru. Isteri teringin makan sedap. Ibu di kampung minta sedikit belanja.</p>
+                <p>Dan jawapan anda selalu sama: <em>"Tunggu gaji masuk nanti."</em></p>
+                <p>Tapi bila gaji masuk, ia habis dalam sekelip mata membayar hutang dan komitmen. Kitaran "Nanti Dulu" itu berulang lagi. Dan lagi.</p>
+                <p style="color: var(--text-white);">Sakit, bukan?</p>
             </div>
 
-            <div class="reveal" style="margin-top: 50px; opacity: 0.5; font-size: 2rem;">↓</div>
+            <div style="font-size: 2rem; margin-top: 50px; opacity: 0.5;">↓</div>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <div class="divider reveal"></div>
-            
-            <div class="highlight-box reveal">
-                <h2 style="margin-top: 0;">Ada "Pencuri" Halus Dalam Setiap Transaksi Anda.</h2>
-                <p style="font-size: 1.3rem; color: #E0E0E0;">
-                    Ini adalah kebenaran yang tidak diberitahu oleh platform membeli-belah gergasi.
-                </p>
+            <div class="fade-in">
+                <h2>Kita Sedang "Rompak" <br>Masa Depan Sendiri.</h2>
+                <div style="width: 100px; height: 1px; background: var(--text-highlight); margin: 30px auto;"></div>
             </div>
 
-            <div class="reveal">
-                <p>Setiap kali anda menekan butang <strong>"Checkout"</strong> di Shopee, Lazada, atau TikTok, anda sebenarnya membayar lebih daripada harga barang.</p>
+            <div class="fade-in">
+                <p>Tahukah anda? Setiap kali anda membeli barang keperluan di Shopee, Lazada, atau TikTok secara biasa, anda sedang <strong>membuang duit</strong> yang sepatutnya boleh menjadi senyuman keluarga anda.</p>
                 
-                <p>Di dalam harga itu, wujud satu kos tersembunyi bernama <em>Komisen Pemasaran</em>.</p>
-                
-                <p>Selama ini, wang itu diambil oleh 'orang tengah'. Syarikat iklan gergasi. Influencer yang sudah kaya raya. Mereka menjadi kaya di atas perbelanjaan keperluan keluarga anda.</p>
-                
-                <p>Anda yang bekerja keras. Anda yang berpenat lelah. <br>Tetapi mereka yang mengaut keuntungan atas angin.</p>
-                
-                <p><strong>Adilkah begitu?</strong></p>
+                <div class="quote-box">
+                    "Setiap ringgit yang anda biarkan hangus dalam sistem online, adalah satu ringgit yang anda curi daripada tabung impian anak-anak anda."
+                </div>
+
+                <p>Sistem ekonomi hari ini kejam. Mereka ambil untung atas angin. Kita pengguna? Kita cuma dapat barang, tapi kehilangan nilai wang.</p>
+                <p>Sampai bila kita nak jadi mangsa? Sampai bila kita nak biarkan orang lain kaya dengan duit gaji kita?</p>
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <section class="section reveal-box">
+        <div class="container fade-in">
+            <p style="color: var(--text-white); margin-bottom: 10px;">Sudah Tiba Masanya Untuk Mengubah Takdir.</p>
+            
+            <div class="brand-text">MOVA</div>
+            
+            <h3 style="font-weight: 300; font-size: 1.8rem; color: var(--text-white);">"Kerana Setiap Sen Itu Adalah Amanah."</h3>
+
+            <p style="color: #AAA; font-size: 1.1rem; max-width: 700px; margin-top: 30px;">
+                Bayangkan jika semua duit yang pernah "hangus" dulu, kini dikembalikan ke dalam akaun anda.
+                <br><br>
+                RM50, RM100, RM500 sebulan.
+                <br><br>
+                Itu bukan sekadar nombor. Itu adalah hadiah mainan anak yang tertangguh. Itu adalah ubat untuk ibu bapa. Itu adalah maruah anda sebagai ketua keluarga.
+            </p>
+
+            <a href="#" class="btn-glow">Saya Nak Mula Sekarang</a>
+            
+            <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">
+                Sertai ribuan rakyat Malaysia yang sudah berhenti memberi alasan.
+            </p>
+        </div>
+    </section>
+
+    <footer>
         <div class="container">
-            <h2 class="reveal">Bayangkan Satu Realiti Baharu...</h2>
-            
-            <div class="reveal">
-                <p>Bagaimana jika saya katakan, anda boleh memintas sistem ini?</p>
-                
-                <p>Bagaimana jika setiap sen 'Komisen Pemasaran' itu tidak lagi pergi ke tangan orang asing, tetapi <strong>dikembalikan terus ke dalam akaun bank anda?</strong></p>
-                
-                <p>RM5 di sini. RM10 di sana. </p>
-                
-                <p>Dalam sebulan, ia menjadi RM100. Dalam setahun, ia menjadi RM1,200.</p>
-                
-                <p>Itu bukan sekadar wang. Itu adalah:</p>
-                <ul style="list-style: none; margin-bottom: 40px; color: var(--text-primary);">
-                    <li style="margin-bottom: 15px;">• Hadiah hari jadi anak yang anda tangguhkan.</li>
-                    <li style="margin-bottom: 15px;">• Makan malam istimewa untuk isteri yang penat memasak.</li>
-                    <li style="margin-bottom: 15px;">• Simpanan kecemasan saat sesak.</li>
-                </ul>
-
-                <p>Teknologi ini sudah wujud. Dan ia sedang digunakan oleh kelompok bijak yang senyap-senyap membina kekayaan dari perbelanjaan harian.</p>
-            </div>
+            <p>&copy; 2024 Mova Malaysia. Dibina Untuk Memartabatkan Ekonomi Anda.</p>
         </div>
-    </section>
-
-    <section class="brand-section">
-        <div class="container">
-            <p class="reveal intro-meta" style="color: #666;">MEMPERKENALKAN KUNCI KEBASAN ANDA</p>
-            
-            <div class="brand-name" id="brandLogo">MOVA</div>
-            
-            <div class="reveal">
-                <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; color: #FFF;">
-                    Satu-satunya ekosistem pintar yang menukar setiap perbelanjaan menjadi pelaburan. Dapatkan kembali hak anda melalui Cashback & Affiliate.
-                </p>
-            </div>
-
-            <div class="reveal">
-                <a href="https://mylink.la/ready2mova" class="btn-gold">Mulakan Legasi Anda (Percuma)</a>
-                <p style="margin-top: 40px; font-size: 0.8rem; color: #555;">Available on App Store & Google Play</p>
-            </div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 60px 0; color: #444; font-size: 0.8rem;">
-        <p>© 2024 MOVA Malaysia. Hak Cipta Terpelihara.</p>
     </footer>
 
     <script>
-        // Logic untuk animasi 'fade-up' bila scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    
-                    // Special trigger for Brand Name scaling
-                    if(entry.target.id === 'brandLogo') {
-                        entry.target.classList.add('visible');
-                    }
+                    entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.2 });
 
-        document.querySelectorAll('.reveal, .brand-name').forEach((el) => {
+        document.querySelectorAll('.fade-in').forEach((el) => {
             observer.observe(el);
         });
     </script>
